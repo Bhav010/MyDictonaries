@@ -1,19 +1,19 @@
 # This program uses a dictionary as a deck of cards.
 
+import _random
 def main():
     # Create a deck of cards.
-   
+  
+    mydeck= create_deck()   #we are assigning the function to a variable
 
     # Get the number of cards to deal.
-    num_cards = int(input('How many cards should I deal? '))
-
-
-
+    num_cards = int(input('How many cards should I deal? Enter between 0 - 52'))
+    
+   
+    deal_cards(mydeck,num_cards)
     # Deal the cards.
 
-
-    
-    
+  
 
 # The create_deck function returns a dictionary
 # representing a deck of cards.
@@ -47,33 +47,44 @@ def create_deck():
     # Return the deck.
 
 
-
-
 # The deal_cards function deals a specified number of cards
 # from the deck.
 
 def deal_cards(deck, number):
     # Initialize an accumulator for the hand value.
-
-    
+   
+  hand_value=0   
     
 
     # Make sure the number of cards to deal is not
     # greater than the number of cards in the deck.
 
-    
+if number > 52:    #OR if number > len(deck) and number = len(deck)
+       number = 52      
+
     
 
     # Deal the cards and accumulate their values.
-    
+for count in range(number):
+        card, value = deck.popitem()
+        print(card)
+        hand_value+=value
 
+    #ALternate : since popitem doesnt work properly
 
+for count in range(number):
+            card = random.choice (list(deck))
+            value=deck[card]
+            print(card)
+            hand_value+=value
+
+del deck[card]
     
 
     # Display the value of the hand.
 
     
-    
+    print("Value of this hand is: ", hand_value)
 
 # Call the main function.
 main()
